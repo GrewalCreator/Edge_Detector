@@ -1,11 +1,21 @@
 import cv2
 import random as rand
-
+from Blur import *
 img = cv2.imread("testImg.jpg", cv2.IMREAD_COLOR)
 
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-blur = cv2.GaussianBlur(gray, (23, 23), 0)
+# blur = cv2.GaussianBlur(gray, (23, 23), 0)
+Blur_Object = Blur(img)
+
+blur = Blur_Object.BoxBlur()
+
+cv2.imshow("Custom Blur", blur)
+
+cv2.waitKey(0)
+
+cv2.destroyAllWindows()
+
 
 color = (rand.randint(0,256), rand.randint(0,256), rand.randint(0,256))
 
